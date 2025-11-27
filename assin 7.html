@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+  </head>
+  <body>
+    <form onsubmit="return validateForm()">
+      <input type="text" id="email" placeholder="Enter Email" />
+      <input type="text" id="phone" placeholder="Enter Phone Number" />
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      function validateForm() {
+        var email = document.getElementById("email").value;
+        var phone = document.getElementById("phone").value;
+
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
+        if (email === "") {
+          alert("Enter your Email ID");
+          return false;
+        } else if (!emailPattern.test(email)) {
+          alert("Invalid Email Format (must be like name@domain.com)");
+          return false;
+        }
+
+        const phonePattern = /^[0-9]{10}$/;
+        if (phone === "") {
+          alert("Enter your Phone Number");
+          return false;
+        } else if (!phonePattern.test(phone)) {
+          alert("Phone number must contain exactly 10 digits");
+          return false;
+        }
+
+        alert("Form Submitted Successfully");
+        return true;
+      }
+    </script>
+  </body>
+</html>
